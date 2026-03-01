@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CX - Contact</title>
+    <link rel="icon" href="../../commons/favicon.png" type="image/png">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <div class="site-title" onclick="window.location.href='../home'">CX</div>
+
+    <div class="menu-btn" id="menuBtn">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
+
+    <div class="contact-wrapper">
+        <div class="contact-intro">
+            Hi, my name is Cyprien, i'm an engineering student.<br><br>
+            I specialize in mechatronics, 3D modelling, manufacturing, mechanical engineering, code and am a passionate tinkerer/builder.<br><br>
+            You can reach me through the following channels, mail is preferred but any will do :
+        </div>
+
+        <div class="social-container">
+            <a href="mailto:cxprien@gmail.com" class="social-card">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <div class="social-label">cxprien@gmail.com</div>
+            </a>
+
+            <a href="https://github.com/cxprien" target="_blank" class="social-card">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <div class="social-label">GITHUB</div>
+            </a>
+
+            <a href="https://instagram.com/cxp.cxp" target="_blank" class="social-card">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <div class="social-label">INSTA</div>
+            </a>           
+        </div>
+    </div>
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <div class="menu-overlay" id="menuOverlay">
+        <div style="position:absolute; top:4vmin; left:4vmin; font-size:4vmin; cursor:pointer; color:#fff;" id="closeBtn">✕</div>
+        
+        <div class="menu-search-wrapper">
+            <input type="text" id="menuSearch" class="menu-search-input" placeholder="SEARCH PAGES..." autocomplete="off">
+        </div>
+
+        <div class="menu-list" id="menuList">
+            <div style="color:#444; font-size: 2vmin;">Loading pages...</div>
+        </div>
+    </div>
+
+    <div class="bottom-banner" id="bottomBanner">
+        <div id="dateDisplay"></div>
+        <div id="bannerContactBtn" style="cursor: pointer;">CONTACT</div>
+    </div>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "fuse.js": "https://unpkg.com/fuse.js@7.0.0/dist/fuse.mjs"
+            }
+        }
+    </script>
+    <script type="module" src="contact.js"></script>
+</body>
+</html>

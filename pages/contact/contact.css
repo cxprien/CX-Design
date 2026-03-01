@@ -1,0 +1,151 @@
+/* --- FONTS --- */
+@font-face {
+    font-family: 'Manifold Extended CF';
+    src: url('../../commons/fonts/ManifoldExtendedCF.woff2') format('woff2'); 
+    font-weight: normal; font-style: normal;
+}
+
+/* --- GLOBAL --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+    width: 100vw; 
+    min-height: 100vh;
+    background-color: #000; 
+    color: #fff;
+    font-family: 'Manifold Extended CF', sans-serif;
+    overflow: hidden; /* Prevents scrollbars from breaking viewport units */
+}
+
+/* --- UI TITLES --- */
+.site-title {
+    position: absolute; top: 1vmin; left: 4vmin;
+    font-size: 10vmin; font-weight: bold; text-transform: uppercase;
+    z-index: 15; cursor: pointer;
+}
+
+/* --- MENUS --- */
+.menu-btn {
+    position: fixed; top: 4vmin; right: 4vmin;
+    width: 5.5vmin; height: 4vmin;
+    display: flex; flex-direction: column; justify-content: space-between;
+    cursor: pointer; z-index: 15;
+}
+.menu-bar { width: 100%; height: 0.6vmin; background: #fff; border-radius: 1vmin; }
+
+.menu-overlay {
+    position: fixed; top: 50%; left: 50%; width: 80vw; height: 80vh;
+    background: #111; transform: translate(-50%, -50%) scale(0.9);
+    border-radius: 5vmin; opacity: 0; pointer-events: none;
+    transition: all 0.3s; z-index: 20;
+    display: flex; flex-direction: column; padding: 6vmin;
+}
+.menu-active .menu-overlay { opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1); }
+.menu-backdrop {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(0.5vmin);
+    opacity: 0; pointer-events: none; transition: 0.3s; z-index: 18;
+}
+.menu-active .menu-backdrop { opacity: 1; pointer-events: all; }
+
+.menu-search-wrapper {
+    width: 100%; margin-top: 6vmin; margin-bottom: 4vmin;
+    border-bottom: 0.2vmin solid #333;
+}
+.menu-search-input {
+    width: 100%; background: transparent; border: none; color: #fff;
+    font-family: inherit; font-size: 4vmin; padding: 1vmin 0;
+    outline: none; text-transform: uppercase;
+}
+.menu-search-input::placeholder { color: #444; }
+
+.menu-list {
+    flex: 1; overflow-y: auto; display: flex;
+    flex-direction: column; gap: 2vmin; padding-right: 2vmin;
+}
+
+/* Scrollbar styling explicitly replacing px with vmin */
+.menu-list::-webkit-scrollbar { width: 0.6vmin; }
+.menu-list::-webkit-scrollbar-track { background: #222; border-radius: 0.3vmin; }
+.menu-list::-webkit-scrollbar-thumb { background: #555; border-radius: 0.3vmin; }
+
+.menu-item {
+    font-size: 3.5vmin; color: #888; cursor: pointer;
+    text-decoration: none; transition: color 0.2s, padding-left 0.2s;
+    text-transform: uppercase;
+}
+.menu-item:hover { color: #fff; padding-left: 1vmin; }
+.menu-item-pinned { color: #fff; font-weight: bold; }
+
+/* --- BANNER --- */
+.bottom-banner {
+    position: fixed; bottom: 0; left: 0; width: 100vw; height: 5vh;
+    background: #000; border-top: 0.15vmin solid #333;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 4vmin; font-size: 1.8vmin; z-index: 15;
+}
+
+/* --- CONTACT LAYOUT --- */
+.contact-wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 95vh; /* Accounts for bottom banner */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    padding: 0 10vw;
+    padding-top: 10vh;
+}
+
+.contact-intro {
+    font-size: 3vmin;
+    color: #ffffff;
+    text-align: start;
+    margin-bottom: 8vh;
+    letter-spacing: 0.1vw;
+}
+
+.social-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4vw;
+}
+
+/* Utilizing glass aesthetic from your homepage */
+.social-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    height: 20vmin;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(1.2vmin);
+    -webkit-backdrop-filter: blur(1.2vmin);
+    border: 0.15vmin solid rgba(255, 255, 255, 0.1);
+    border-radius: 3vmin;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.social-card:hover {
+    transform: translateY(-1vmin) scale(1.05);
+    background: rgba(40, 40, 40, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.social-icon {
+    width: 6vmin;
+    height: 6vmin;
+    margin-bottom: 2vmin;
+}
+
+.social-label {
+    font-size: 2vmin;
+    font-weight: bold;
+    letter-spacing: 0.2vw;
+}

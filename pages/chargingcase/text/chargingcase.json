@@ -1,0 +1,32 @@
+{
+  "pageTitle": "Charging Case",
+  "date": "October 2025",
+  "rows": [
+    {
+      "mediaSrc": "images/asus19v632a_bg_removed.png",
+      "mediaAlt": "Asus 19V 6.32A charger",
+      "text": "This project began after my laptop charger failed at the point where the low-voltage cable meets the power brick. Repeated bending during transport caused the reinforced junction to crack, eventually leading to intermittent electrical continuity. Rather than replacing the charger, I redesigned it. I replaced the fixed cable with a standard detachable connector capable of safely handling the required power. An XT60 connector was selected for its current capacity and robustness. I then redesigned the enclosure entirely, optimizing internal space and introducing a two-part clamshell housing secured with captive nuts and screws to significantly improve serviceability."
+    },
+    {
+      "mediaSrc": "images/printed_case_xt60.png",
+      "mediaAlt": "XT60 connector and cable",
+      "text": "Low-voltage connector upgrade: XT60.\nSeveral connector standards were considered, including 5.5 mm barrel jacks, XT30, and XT60 connectors. Given the required current capacity, anticipated connection cycles, and mechanical robustness, the XT60 was selected. An open-source 3D model of the connector was integrated into the CAD environment, allowing the enclosure to be designed around it precisely. The geometry ensures secure retention within the two-part housing while maintaining compact internal packaging."
+    },
+    {
+      "mediaSrc": "images/printed_case_bottom.png",
+      "mediaAlt": "printed case bottom up view",
+      "text": "The original enclosure consisted of two plastic shells ultrasonically welded together. While this method is efficient for mass production, it severely limits repairability. Disassembly typically damages the enclosure and risks harming internal components, effectively making the unit non-serviceable. In contrast, the redesigned housing prioritizes accessibility. The enclosure is secured using captive M3 nuts embedded in the top half and corresponding screw channels in the bottom half, fastened with four standard 12 mm Phillips screws. The geometry was optimized for support-free 3D printing, and tolerances were defined to accommodate the dimensional variability of entry-level printers."
+    },
+    {
+      "mediaSrc": "images/printed_case_top.png",
+      "mediaAlt": "printed case top down view",
+      "text": "During disassembly, I discovered an unused rectangular cutout in the PCB area that had not been utilized in the original design. Rather than leaving this volume unused, I incorporated it into the new enclosure as a structural carrying loop. This loop is dimensioned specifically to accommodate the Velcro strap supplied with the mains cable. The result is an integrated cable management and carrying solution that improves portability while maintaining structural integrity."
+    },
+    
+    {
+      "mediaSrc": "images/printed_case_carrying.png",
+      "mediaAlt": "carrying mode of the printed case",
+      "text": "Although the failure highlighted a clear mechanical weakness in the original design, it ultimately provided an opportunity for practical redesign. The project allowed me to apply engineering principles to resolve a common failure point while improving functionality, serviceability, and usability beyond the original product's specifications."
+    }
+  ]
+}

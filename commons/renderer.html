@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lossless 60FPS Sequence Exporter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        body { margin: 0; background: #111; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        #controls { position: absolute; top: 20px; left: 20px; z-index: 10; background: rgba(0,0,0,0.9); padding: 20px; border-radius: 8px; width: 280px; border: 1px solid #444; }
+        canvas { border: 1px solid #555; max-width: 60vw; max-height: 60vh; background: #000; background-image: linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222), linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222); background-size: 20px 20px; background-position: 0 0, 10px 10px; }
+        .btn { background: #e91e63; color: white; border: none; padding: 12px; cursor: pointer; margin-top: 10px; width: 100%; font-weight: bold; }
+        .btn:disabled { background: #333; }
+        progress { width: 100%; margin-top: 10px; }
+        #status { margin-top: 15px; font-size: 12px; color: #00ff00; }
+    </style>
+</head>
+<body>
+
+<div id="controls">
+    <div id="drop-zone" style="border: 2px dashed #555; padding: 20px; text-align: center;">Drop GLB here</div>
+    <button id="renderBtn" class="btn" disabled>EXPORT LOSSLESS SEQUENCE</button>
+    <progress id="progress" value="0" max="100" style="display:none;"></progress>
+    <div id="status">Waiting for GLB...</div>
+</div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+    let mixer, animationDuration = 0;
+    const fps = 60;
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
+    renderer.setSize(1920, 1080);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.25;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.body.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1920 / 1080, 0.1, 1000);
+    camera.position.set(8, -0.5, 0);
+    camera.lookAt(0, -0.5, 0);
+
+    // Environment and Lights (Exact settings)
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    new RGBELoader().load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/equirectangular/venice_sunset_1k.hdr', (hdr) => {
+        scene.environment = pmremGenerator.fromEquirectangular(hdr).texture;
+    });
+    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+    const sun = new THREE.DirectionalLight(0xffffee, 5);
+    sun.position.set(5, 10, 7);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    scene.add(sun);
+
+    // File Loading
+    document.getElementById('drop-zone').ondrop = e => {
+        e.preventDefault();
+        const reader = new FileReader();
+        reader.onload = ev => {
+            new GLTFLoader().parse(ev.target.result, '', gltf => {
+                scene.traverse(n => { if(n.isMesh) scene.remove(n); });
+                const model = gltf.scene;
+                model.traverse(n => { if(n.isMesh) { n.castShadow = true; n.receiveShadow = true; }});
+                scene.add(model);
+                mixer = new THREE.AnimationMixer(model);
+                animationDuration = 0;
+                gltf.animations.forEach(clip => {
+                    mixer.clipAction(clip).play();
+                    if (clip.duration > animationDuration) animationDuration = clip.duration;
+                });
+                document.getElementById('renderBtn').disabled = false;
+                document.getElementById('status').innerText = `Ready: ${animationDuration.toFixed(2)}s @ 60fps`;
+            });
+        };
+        reader.readAsArrayBuffer(e.dataTransfer.files[0]);
+    };
+    document.ondragover = e => e.preventDefault();
+
+    // The Render Engine
+    document.getElementById('renderBtn').onclick = async () => {
+        const btn = document.getElementById('renderBtn');
+        const prog = document.getElementById('progress');
+        btn.disabled = true;
+        prog.style.display = 'block';
+
+        const zip = new JSZip();
+        const totalFrames = Math.ceil(animationDuration * fps);
+        const frameTime = 1 / fps;
+
+        for (let i = 0; i < totalFrames; i++) {
+            // Force the mixer to a specific point in time
+            mixer.setTime(i * frameTime);
+            renderer.render(scene, camera);
+
+            // Capture as high-quality PNG
+            const dataUrl = renderer.domElement.toDataURL('image/png');
+            const b64Data = dataUrl.split(',')[1];
+            zip.file(`frame_${String(i).padStart(5, '0')}.png`, b64Data, {base64: true});
+
+            // Update UI
+            const percent = (i / totalFrames) * 100;
+            prog.value = percent;
+            document.getElementById('status').innerText = `Rendering frame ${i}/${totalFrames}...`;
+            
+            // Allow UI to breathe
+            await new Promise(r => setTimeout(r, 10));
+        }
+
+        document.getElementById('status').innerText = "Zipping files... please wait.";
+        const content = await zip.generateAsync({type:"blob"});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(content);
+        link.download = "render_sequence.zip";
+        link.click();
+        
+        btn.disabled = false;
+        prog.style.display = 'none';
+        document.getElementById('status').innerText = "Export Complete!";
+    };
+
+    function preview() {
+        requestAnimationFrame(preview);
+        if (mixer && document.getElementById('renderBtn').disabled === false) {
+            mixer.update(0.016); // Simple 60fps preview
+        }
+        renderer.render(scene, camera);
+    }
+    preview();
+</script>
+</body>
+</html>

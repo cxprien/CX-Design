@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CX - Home</title>
+    <link rel="icon" href="../../commons/favicon.png" type="image/png">
+    <link rel="stylesheet" href="home.css">
+    </head>
+<body>
+
+    <div class="site-title" onclick="window.location.href='../home'">CX</div>
+
+    <div class="menu-btn" id="menuBtn">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
+
+    <div id="slideshow-container" class="slideshow-container">
+        <div class="nav-arrow left-arrow" id="prevBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="nav-arrow right-arrow" id="nextBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        
+        <div id="slide-track" class="slide-track"></div>
+    </div>
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <div class="menu-overlay" id="menuOverlay">
+        <div style="position:absolute; top:4vmin; left:4vmin; font-size:4vmin; cursor:pointer; color:#fff;" id="closeBtn">✕</div>
+        
+        <div class="menu-search-wrapper">
+            <input type="text" id="menuSearch" class="menu-search-input" placeholder="SEARCH PAGES..." autocomplete="off">
+        </div>
+
+        <div class="menu-list" id="menuList">
+            <div style="color:#444; font-size: 2vmin;">Loading pages...</div>
+        </div>
+    </div>
+
+    <div class="bottom-banner" id="bottomBanner">
+        <div id="dateDisplay"></div>
+        <div id="bannerContactBtn" style="cursor: pointer;">CONTACT</div>
+    </div>
+
+    <script type="importmap">
+            {
+                "imports": {
+                    "fuse.js": "https://unpkg.com/fuse.js@7.0.0/dist/fuse.mjs"
+                }
+            }
+        </script>
+
+    <script type="module" src="home.js"></script>
+</body>
+</html>

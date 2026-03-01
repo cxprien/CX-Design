@@ -1,0 +1,26 @@
+{
+  "pageTitle": "GTX 1080 Shroud",
+  "date": "November 2022",
+  "rows": [
+    {
+      "mediaSrc": "images/server1080.png",
+      "mediaAlt": "gtx 1080 with bare radiator and no shroud",
+      "text": "In 2022, at the peak of the GPU shortage, I was limited to a GTX 1050 Ti. While adequate for light gaming, its 4GB of VRAM significantly restricted my work in 3D modeling and simulation. Market prices were beyond my budget, so when my employer offered two GTX 1080s for 500 euros total, I accepted immediately. They were inexpensive because they had previously been used for cryptocurrency mining and were sold without their original cooling systems (only a bare heatsink was left), intended for server chassis use. To make them usable, I designed a custom 3D-printed shroud, sourced an appropriate radial fan, and engineered the assembly to remain quiet while preventing thermal throttling or heat-related deformation of the printed components."
+    },
+    {
+      "mediaSrc": "images/gtx1080_top_down_view.png",
+      "mediaAlt": " top down view of a 3d modeled bare getx 1080",
+      "text": "Because no existing 3D model was available for this specific card, and given its complex geometry, I reverse engineered it manually. I measured every feature with calipers and recreated the geometry in Fusion 360. Although time-consuming, this approach ensured a precise fit, and the final shroud matched the card perfectly."
+    },
+    {
+      "mediaSrc": "images/120duct.png",
+      "mediaAlt": "3d render of a 120mm duct",
+      "text": "I evaluated several cooling options, focusing on components I already had access to. An initial attempt involved designing a duct for a standard 120mm axial fan, but this proved inadequate. The static pressure was too low for the dense heatsink fins, and the required duct geometry occupied excessive space. I instead salvaged a radial blower from a GTX 480, whose thermal requirements were comparable. After validating the design, I purchased a new unit of the same radial fan + motor model to complete the build."
+    },
+    {
+      "mediaSrc": "images/in_situ_1080.png",
+      "mediaAlt": "picture of the 1080; with the printed shroud, inside a wooden pc",
+      "text": "Repairability and customization were central design goals. The 3D-printed construction allowed for a modular, screw-based assembly and custom lettering on the housing. The final result met all expectations: the card operates quietly and maintains safe temperatures even under sustained heavy workloads. The same shrouds are still in use today and continue to perform reliably during demanding tasks such as AAA gaming, 3D rendering, and FEA simulations."
+    }
+  ]
+}

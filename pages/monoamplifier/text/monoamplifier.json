@@ -1,0 +1,26 @@
+{
+  "pageTitle": "400W Mono Amplifier",
+  "date": "June 2025",
+  "rows": [
+    {
+      "mediaSrc": "images/components.png",
+      "mediaAlt": "picture of the internal electronics components of the amplifier, including the irs2092 board and the 60V symmetrical switching power supply",
+      "text": "This project involved designing a 3D-printable enclosure for high-power electronics, with the objectives of minimizing footprint and ensuring effective low-noise cooling. The main components include an IRS2092 amplifier board, a 60V symmetrical switching power supply, and various connectors."
+    },
+    {
+      "mediaSrc": "videos/design_process.mp4",
+      "mediaAlt": "accelerated video of the evolution of the 3D model from 0 to the final product",
+      "text": "The design process began with measuring the PCB footprints and required vertical space to optimize layout while maintaining sufficient room for internal connections and electrical separation. After defining component placement and orientation, a 120mm fan was positioned for optimal airflow and clearance from internal wiring. The design was then refined visually, exploring different shapes until achieving the desired aesthetic. Interfacing surfaces and mechanical connector locations were added to allow a 3D-printable assembly using screws and nuts."
+    },
+    {
+      "mediaSrc": "images/render_vs_result.png",
+      "mediaAlt": "juxtaposition of the 3D render on the left and 3 different angles of the real-life printed and finished product on the right, showing similarity to the render",
+      "text": "The final design features an inverted fan, blowing air from its front side to support the selected convection scheme. Air is drawn through violin-like slits in the enclosure, reflecting the musical inspiration of the device, and is directed both upward by heat from the components and outward by the fan. To reduce operational noise, the fan is undervolted to 5V, sufficient for low backpressure operation while significantly lowering RPM and dynamic noise."
+    },
+    {
+      "mediaSrc": "images/amp_opened.png",
+      "mediaAlt": "picture showing the internal layout of the components with the amplifier opened in two halves, revealing dense internal layout and wiring",
+      "text": "The completed amplifier demonstrates high power density and effective thermal performance while remaining compact. The physical product closely matches the CAD design and pre-build renders. Full characterization of floor noise, total harmonic distortion, and frequency response has not been performed due to the unavailability of specialized test equipment, but qualitative in-situ testing confirms high power output far exceeding expectations given the low overall build cost."
+    }
+  ]
+}

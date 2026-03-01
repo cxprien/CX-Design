@@ -1,0 +1,41 @@
+{
+  "pageTitle": "IoT L.A.S.E.R. Turret",
+  "date": "December 2025",
+  "rows": [
+    {
+      "mediaSrc": "images/esp8266+servo.webp",
+      "mediaAlt": "ESP8266 microcontroller and servo motor",
+      "text": "This project began as a race against the clock. Unable to find a Christmas gift for a family member, I decided to build one instead. I had from 8 PM until 7 AM, when my family was departing. After reviewing the electronic components I had available, I chose to design and build a phone-controlled laser turret. While ultimately a toy, it presented a substantial engineering challenge. In a single night, I visually designed the object, created a precise CAD model to fit each component, 3D printed the enclosure, assembled the hardware, completed the electronics, wrote the software, and tested the system. The result was an intense, sleepless, but ultimately successful 11-hour Monster fueled sprint."
+    },
+    {
+      "mediaSrc": "images/fusion_screenshot.png",
+      "mediaAlt": "Top-down view of the 3D CAD model of the turret assembly",
+      "text": "I began by arranging the components to ensure proper fit and sufficient clearance for movement, while maintaining a compact, serviceable, and aesthetically clean design. The enclosure had to be fully 3D printable, and given the time constraints, I had only one opportunity to print it correctly."
+    },
+    {
+      "mediaSrc": "images/printing.jpeg",
+      "mediaAlt": "turret components during 3D-printing",
+      "text": "Once the final model was ready, I launched the print. After completion, I proceeded with mechanical and electrical assembly. Some tolerances were imperfect, and the servo motors initially did not fit as intended. I resolved this by carefully filing their supports. Due to manufacturing constraints of my printer, I could not embed the nuts during printing, so I press-fitted them and secured them in place with Superglue."
+    },
+    {
+      "mediaSrc": "images/code.png",
+      "mediaAlt": "screenshot of the code used in the turret",
+      "text": "The software was developed and refined while the parts were printing. I defined several strict requirements, all of which were met: the device had to function without any app or driver downloads and operate entirely without an internet connection, with no reliance on externally hosted libraries."
+    },
+    {
+      "mediaSrc": "videos/boot_routine.mp4",
+      "mediaAlt": "Turret boot routine demonstration",
+      "text": "On first boot or during a new setup, the turret performs an initialization routine and confirms successful startup with a motion gesture. It then broadcasts its own access point named \"laserturret.\" When the user connects, a captive portal automatically displays the configuration page. The turret scans for available Wi-Fi networks and presents a list of SSIDs. The user selects a network and enters the password, after which the turret attempts to connect while maintaining the access point connection to keep the client informed of progress. This ensures that, in case of errors such as an incorrect password, the user can retry without restarting the entire setup process. Once connected, the turret uses mDNS to advertise itself as \"laserturret.local\" regardless of its assigned IP address, improving resilience to DHCP changes and simplifying access."
+    },
+    {
+      "mediaSrc": "videos/ui+turret.mp4",
+      "mediaAlt": "video demo side by side of the turret and its interface",
+      "text": "After setup, accessing \"laserturret.local\" allows control of the turret from any web-compatible device with very low latency and multiple control modes. The main slider adjusts the PWM intensity of the laser diode or, in burst mode, the blink frequency. A safety checkbox ensures that the laser maintains its selected intensity or burst setting only while actively receiving user input, defaulting to zero when the signal stops. Although this makes sustained output less convenient, it improves operational safety. Additionally, the turret automatically disables the laser if it does not receive regular keep-alive signals from the client device. The joystick supports two modes: absolute and relative control. In absolute mode, the full joystick range maps directly to the servo range. In relative mode, joystick displacement determines how quickly and in which direction the turret angles change."
+    },
+    {
+      "mediaSrc": "images/turret.png",
+      "mediaAlt": "Completed 3D-printed IoT laser turret",
+      "text": "Despite the demanding timeline, the final product achieved a high level of physical quality and user experience. The app-free, seamless setup process met all initial objectives. The recipient greatly enjoyed using it, which ultimately validated the effort and made the project particularly rewarding."
+    }
+  ]
+}

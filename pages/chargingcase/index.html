@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CX</title>
+    <link rel="icon" href="../../commons/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../../commons/style/style.css">
+</head>
+<body>
+
+    <div class="site-title" onclick="window.location.href='../home'">CX</div>
+    <div class="page-title"></div>
+
+    <div class="menu-btn" id="menuBtn">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
+
+    <div id="canvas-container" data-model="assets/chargingcase_animated.glb">
+        <div class="zoom-controls hidden" id="zoomControls">
+            <button id="zoomIn" class="zoom-btn">+</button>
+            <button id="zoomOut" class="zoom-btn">-</button>
+        </div>
+    </div>
+
+    <div class="content-scroll-area" 
+        data-json="text/chargingcase.json">
+    </div>
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <div class="menu-overlay" id="menuOverlay">
+        <div style="position:absolute; top:4vmin; left:4vmin; font-size:4vmin; cursor:pointer; color:#fff;" id="closeBtn">✕</div>
+        
+        <div class="menu-search-wrapper">
+            <input type="text" id="menuSearch" class="menu-search-input" placeholder="SEARCH PAGES..." autocomplete="off">
+        </div>
+
+        <div class="menu-list" id="menuList">
+            <div style="color:#444; font-size: 2vmin;">Loading pages...</div>
+        </div>
+    </div>
+
+    <div class="bottom-banner" id="bottomBanner">
+        <div id="dateDisplay"></div>
+        <div id="bannerContactBtn" style="cursor: pointer;">CONTACT</div>
+    </div>
+
+    <div id="interactToggleContainer" class="interact-toggle-container hidden">
+        <span class="toggle-label">ANIMATION</span>
+        <label class="switch">
+            <input type="checkbox" id="interactToggleCb">
+            <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">INTERACT</span>
+    </div>
+
+    <div id="handOverlay" class="hand-overlay hidden">
+        <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 11V6a2 2 0 0 0-4 0v4"></path>
+            <path d="M14 10V5a2 2 0 0 0-4 0v5"></path>
+            <path d="M10 10.5V4a2 2 0 0 0-4 0v9.5"></path>
+            <path d="M6 14v-1a2 2 0 0 0-4 0v5.5c0 3.038 2.462 5.5 5.5 5.5h3.586a2 2 0 0 0 1.414-.586l4.672-4.672a2 2 0 0 0 .586-1.414V14a2 2 0 0 0-2-2h-3"></path>
+        </svg>
+        <p>DRAG TO INTERACT</p>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+                "fuse.js": "https://unpkg.com/fuse.js@7.0.0/dist/fuse.mjs"
+            }
+        }
+    </script>
+    <script type="module" src="../../commons/script/script.js"></script>
+</body>
+</html>
