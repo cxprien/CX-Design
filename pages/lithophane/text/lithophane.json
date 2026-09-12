@@ -1,0 +1,26 @@
+{
+  "pageTitle": "USB C Lithophane",
+  "date": "April 2026",
+  "rows": [
+    {
+      "mediaSrc": "images/Front_view_lithophane.png",
+      "mediaAlt": "Front view of the USB-C lithophane mood light displaying artwork",
+      "text": "This project was made as a gift for an artsy friend of mine, particularly fond of the work of Salvador Dalí. I wanted to create something that combined the warmth of a bedside light with the convenience of a USB-C powered device, while also providing a highly customizable way to display artwork. The result is a compact 3D-printed LED lithophane mood light with an interchangeable front plate. A lithophane recreates a grayscale image by varying the thickness of a translucent material: thinner areas allow more light through, while thicker areas block more of it, creating the image through differences in brightness. This makes lithophanes particularly well suited to 3D printing, where dedicated G-code generators make it possible to turn almost any image into a printable, customizable surface. Different front plates can therefore be produced cheaply and quickly, allowing parameters such as depth, contrast, and transmitted light to be refined through iteration."
+    },
+    {
+      "mediaSrc": "images/Back_view_lithophane.png",
+      "mediaAlt": "Back view of the USB-C lithophane showing the USB-C Power Delivery board",
+      "text": "The electronics were chosen around the intended use as a soft bedside light. The device uses two 12 V LEDs to provide a gentle ambient glow that does not strain the eyes and still allows the detailed artwork to be viewed directly. Power is supplied through a USB-C Power Delivery trigger board, allowing the lithophane to be powered by a compatible USB-C PD charger rather than requiring a dedicated power supply. Keeping the USB-C connection on the rear of the device also preserves the clean appearance of the front and makes the lamp convenient to power while sitting on a bedside table or other surface."
+    },
+    {
+      "mediaSrc": "images/Side_view_lithophane.png",
+      "mediaAlt": "Side view of the USB-C lithophane showing its compact corner-friendly shape",
+      "text": "The overall form factor was designed to make the lamp easy to place in a room without taking up unnecessary space. Its curved front plate and compact body allow it to sit naturally in the corner of a room or on a bedside table, where it can cast a warm glow into the surrounding space. The design also keeps the artwork facing outward while the body remains relatively shallow, making efficient use of the available space. This combination of a small footprint, soft indirect illumination, and interchangeable artwork was central to the goal of creating a practical mood light rather than simply an illuminated display."
+    },
+    {
+      "mediaSrc": "images/Lithophane_insides.png",
+      "mediaAlt": "Interior of the USB-C lithophane with the front plate removed, showing the LEDs and circuit boards",
+      "text": "The device is made from two main 3D-printed parts: the interchangeable curved lithophane front plate and the main body, which houses the electronics and LEDs. The entire assembly was designed with tool-less construction and a minimal number of parts in mind. Apart from the soldered connections between the USB-C board and the LEDs, everything can be assembled without tools. The front plate slides into position and clips securely into the body, providing a snug fit while remaining easy to remove and replace. The two circuit boards are similarly press-fitted into their respective mounts, with carefully tuned tolerances keeping them securely in place. Around the USB-C Power Delivery board, the surrounding wall geometry is specifically shaped to resist the forces generated when plugging and unplugging the USB-C cable, preventing the board from being dislodged. The final result meets the original design goals : a compact, customizable mood light that is easy to assemble, easy to power, and capable of transforming different artworks into a warm and softly illuminated display."
+    }
+  ]
+}
