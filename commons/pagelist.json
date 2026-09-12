@@ -4,5 +4,6 @@
     { "title": "Charging Case", "url": "pages/chargingcase" },    
     { "title": "GTX 1080 Shroud", "url": "pages/gtx1080shroud" },    
     { "title": "IoT L.A.S.E.R. Turret", "url": "pages/laserturret" },
-    { "title": "400W Mono Amplifier", "url": "pages/monoamplifier" }
+    { "title": "400W Mono Amplifier", "url": "pages/monoamplifier" },
+    { "title": "USB C Lithophane", "url": "pages/lithophane" }
 ]
